@@ -1,0 +1,308 @@
+ <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>exercise day 5</title>
+<style type="text/css">
+	header{
+		height: 300px;
+		width: 100%;
+		float: left;
+	}
+	header .logo{
+		width: 60px
+		height: 40px;
+		float: left;
+	}
+	header .title-header{
+		width: 500px;	
+		height: 60px;
+		float: left;
+	}
+	header .info-header{
+		width: 1000px;
+		margin: auto;
+	}
+	header .title-header .title{
+		float: left;
+	}
+	header .info-header .contact-us { 
+		float: right;
+	}
+	nav {
+		height: 50px;
+	}
+	nav ul {
+	    list-style-type: none;
+	    margin: 0;
+	    padding: 0;
+	    overflow: hidden;
+	    border: solid #ccc 1px;
+	 }
+
+	nav ul li {
+	    float: left;
+	    border-left: solid 1px #ccc;
+	}
+
+	nav ul li a {
+	    display: block;
+	    color: black;
+	    text-align: center;
+	    padding: 16px 16px;
+	    text-decoration: none;
+	}
+
+	nav ul li a:hover {
+		color: #a7e0f4;
+	}
+	.banner p {
+		background-color: #B1C4E9;
+		padding: 50px 50px;
+	}
+	content{
+		width: 100%;
+		float: left;
+		height: 950px;
+		padding: 5% 5% 0% 5%;
+	}
+	aside{
+		width: 20%;
+		height: 100%;
+		background-color: #d8d2e9;
+		float: left;
+		margin-right: 1%;
+	}
+	.menu-left-item p {
+		padding-left: 10px;
+	}
+	aside section ul{
+		background-color: #fff;
+		padding-bottom: 10px;
+		padding-top: 10px;
+	}
+	aside section ul li{
+		margin: 5px 0px;
+	}
+	article{
+		width: 65%;
+		height: 100%;
+		float: left;	
+	}
+	article section{
+		width: 30%;
+		border: #000 1px solid;
+		float: left;
+		height: 300px;
+		margin: 0 1.5% 1.5% 1.5%;
+	}
+	.content-list .content-list-item{
+		padding: 0px 15px;
+	}
+	.order-calender form input[type=text] {
+		margin: 7px 0px;
+		padding: 2px 0px;
+
+	}
+	.order-calender form input[type=submit] {
+		margin: 7px 0px 7px 60px;
+		padding: 5px 15px;
+		background-color: #00CF4F;
+		color: #FFF;
+		font-weight: bold;
+	}
+	footer{
+		height: 100%;
+	}
+	footer .copyright{
+		text-align: center;		
+		width: 90%;
+	}
+	footer .navi-end{
+		float: left;
+		width: 100%;
+		margin: 0px 100px;
+		vertical-align: center;
+	}
+	footer .navi-end section{
+		float: left;
+		width: 30%;
+	}
+	
+</style>
+</head>
+<body>
+	<header>
+		<div class="info-header">
+			<div class="logo">
+				<a href="#"><img src="../abc.jpg" width="120" height="120"></a>
+			</div>
+			<div class="title-header">
+					<div class="title">
+						<h1>Phòng khám chuyên khoa</h1>
+						<p><b>Vật lý trị liệu - phục hồi chức năng</b></p>
+					</div>					
+			</div>
+			<div class="contact-us">
+						<img src=""/>
+						<p>Câu hỏi cho bác sĩ <a href="#">0123456789</a></p>
+			</div>
+		</div>
+		<div style="clear: both;"></div>
+		<nav>
+			<ul style="list-style: none">
+				<li><a href="#">Trang chủ</a></li>
+				<li><a href="#">Giới thiệu</a></li>
+				<li><a href="#">Dịch vụ y tế</a></li>
+				<li><a href="#">Y học thường thức</a></li>
+				<li><a href="#">Đặt lịch khám</a></li>
+				<li><a href="#">Tư vấn và liên hệ</a></li>
+			</ul>
+		</nav>
+		<div class="banner">
+			<p>TRANG CHỦ > DỊCH VỤ Y TÊ</p>
+		</div>
+		</div>
+	</header>
+	<content>
+		<aside>
+			<section class="menu-left-item">
+				<p>Người lớn</p>
+				<ul>
+					<li>Đau cổ vai tay</li>
+					<li>Đau cột sống</li>
+					<li>Thoái vị đĩa điệm</li>
+					<li>Khớp gối, khớp hông</li>
+					<li>Đau chân</li>
+					<li>Các bệnh về cơ</li>
+					<li>Thần kinh ngoại biên</li>
+					<li>Di chứng tai biến mạch máu não</li>
+					<li>Di chứng chấn thương</li>
+				</ul>
+			</section>
+			<section class="menu-left-item">
+				<p>Trẻ em</p>
+				<ul>	
+
+				</ul>
+			</section>
+			<section>
+				<div class="order-calender">
+					<h4>Đặt lịch khám</h4>
+					<form style="margin: 0px 3px"> 
+						<input type="text" placeholder="Họ tên" name="">
+						<input type="text" placeholder="Địa chỉ" name="">
+						<input type="text" placeholder="Số điện thoại" name="">
+						<input type="text" placeholder="Thời gian" name="">
+						<input type="submit" value="Đặt lịch" name="">
+					</form>
+					
+				</div>
+			</section>
+		</aside>
+		<article>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+			<section class="content-list">		
+				<img src="../" height="65%" width="100%" style="background-color: #DDD">	
+				<div class="content-list-item">
+					<h5>Dau co vai tay</h5>
+					<pre>abcdeefhg...</pre>
+				</div>
+			</section>
+
+			
+		</article>
+	</content>
+	<footer>
+		<div class="navi-end">
+			<section>
+				<h4>Về phòng khám</h4>
+				<ul>
+					<li>Giới thiệu chung</li>
+					<li>Nhân lực</li>
+					<li>Trang thiết bị và cơ sở vật chất</li>
+				</ul>
+			</section>			
+			<section>
+				<h4>Hổ trợ</h4>
+				<ul>
+					<li>Tư vấn sức khỏe</li>
+					<li>Y học thường thức</li>
+					<li>Đặt lịch khám</li>
+				</ul>
+			</section>
+			<section>
+				<h4>Kết nối xã hộ</h4>
+				<ul>
+					<li><a href="#"><img src="../abc.jpg" width="10px" height="10px" />FACEBOOK</a></li>
+					<li><a href="#"><img src="../abc.jpg" width="10px" height="10px" />GOOGLE+</a></li>
+					<li><a href="#"><img src="../abc.jpg" width="10px" height="10px" />YOUTUBE</a></li>
+					
+				</ul>
+			</section>
+		</div>
+		<div style="clear: both;"></div>
+		<div class="copyright">&copy; 2015 - BẢN QUYÊN CỦA PHÒNG KHÁM CHUYÊN KHOA</div>
+	</footer>
+</body>
+
+
+
+
+
+</html> 
