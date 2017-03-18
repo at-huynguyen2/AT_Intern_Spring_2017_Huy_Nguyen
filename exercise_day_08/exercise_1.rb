@@ -10,93 +10,62 @@ require "pry"
       :reconnect => true
 )
 #transaction in ruby???
-
-class FootballTeam
-	def initialize(id,name,seed)
-		@id, @name, @seed = id, name, seed
-	end
-	def getID
-		@id
-	end
-	def getName
-		@name
-	end
-	def getSeed
-		@seed
-	end
-end
-
 $number_team = 16
-
-#insert football_tearm into database
-def insertNumber obj
-	p obj.getName
-	#query = "insert into football_tearm(id_team, name_team, seed) values ('.obj.getID.', "'.obj.getName.'", "'.obj.getSeed.'")"
-	query = "insert into football_tearm(id_team, name_team, seed) values (%d, '%s', %s)" % [obj.getID, obj.getName, obj.getSeed]
-	p query
-	return isSuccess = @client.query(query)
-end
-
+#Ham maxIDFootballTeam dung de lay id lon nhat cua football_tearm trong csdl
 def maxIDFootballTeam
 		results = @client.query("SELECT max(id_team) as max from football_tearm")	
-		results.each do |row|
-	 		return row["max"].to_i  
-		end
-		#return results.first["max"].to_i
+		return results.first["max"].to_i
 	end
 
-#input array from database
-def inputArrayFromDB arr
-	results = client.query("SELECT id_team, name_team, seed football_tearm")
-	results.each do |row|
-		ob = FootballTeam.new(row["id_team"].to_i, row["name_team"].to_s, row["seed"].to_i)
-	 	arr.push(ob) 
-	end
-	return arr
+#Ham inputListToDB dung de nhap mot mang co san vao trong database
+# => argument1 arr: mang co san du lieu muon nhap vao
+# => argument2 hash: nhap mang vao 1 hash de xu ly cac nhiem vu phia sau
+def inputListToDB arr, hash
+	maxID = maxIDFootballTeam
+	arr.map do |i|
+		maxID+=1
+		query = "insert into football_tearm(id_team, name_team, seed) values (%d, '%s', %s)" % [maxID, i.at(0), i.at(1)]
+		@client.query(query)
+		hash[maxID.to_s] = i
+	end	
 end
 
-############
-	
-
-def inputListToDB 
+#Ham inputListToArr dung de nhap du lieu vao trong mang. Ham tra ve mot mang moi duoc nhap thong tin vao
+def inputListToArr
 	$number_team
 	loop do 
 		puts "Input numbers football team (number must divisible for 4):  "
 		$number_team = gets.to_i
 		break if $number_team%4==0
 	end
-
+	arr = Array.new
 
 	(1..$number_team).each do |i|
 		puts "   * Information team #{i}"
 		puts "     - name : "
-		name = gets.to_s
-		puts "     - seed(input Y to choose seed team else everything key to choose normal team) : "
-		seed = (gets.to_s.upcase == "Y")?1:0
-		maxID = maxIDFootballTeam + 1
-		objTeam = FootballTeam.new(maxID, name, seed)
-		insertNumber objTeam
+		name = gets.chomp
+		puts "     - seed(input Y if choose Seed team else anykey) : "	
+		seed = gets.chomp.upcase
+		seed = ( seed == "Y")?1:0
+		arr.push([name, seed])
 	end
-	
+	return arr
 end
 
-#Hien thi doi bong theo bang
+#showAllTeam : Hien thi doi bong theo bang
+# => argument1 hash: du lieu can hien thi ra man hinh
 def showAllTeam hash
 	format = '| %-5s | %-25s | %-15s|'
 	puts "------------------------------------------------------"
-	puts format % ['ID', 'Football name', 'Seed', 'Type', 'Role', 'Age']
+	puts format % ['ID', 'Football name', 'Seed']
 	puts "------------------------------------------------------"
-	#arr.map do |i|
-	#	puts format % [ i.at(0), i.at(1), ((i.at(2) == 1)?("true"):("-"))]		
-	#end
 	hash.each do |key, value|
 		puts format % [ key, value.at(0), ((value.at(1) == 1)?("true"):("-"))]
 	end	
 	puts "-----------------------------------------------------"
 end
 
-#kiem tra id co dung dinh dang khong? id ko co trong db, id da nhap roi, id la ky tu chu cai'
-
+#isNumber: kiem tra id co dung dinh dang khong? id ko co trong db, id da nhap roi, id la ky tu chu cai'
 def isNumber number
 	begin
 	  number = Integer(number)
@@ -106,6 +75,9 @@ def isNumber number
 	return true
 end
 
+#isExited: dung de kiem tra id co xuat hien trong mang da nhap vao chua. Ham ta ve id neu mang dung. nguoc lai ham tra ve false
+# => argument1 arr: mang chua du lieu can kiem tra
+# => argument2 id: mang chua id can kiem tra trong mang arr
 def isExited arr, id
 	return true if arr.empty?
 	return false if arr.include? id
@@ -118,9 +90,6 @@ end
 # => index chi so cua tran dau trong mot vong ban
 # => arrEntered: list cac doi bong da duoc nhap vao trong he thong
 # => originHash: list tat ca doi bong trong vong bang
-
-
-
 def inputID123 id, index, arrEntered, originHash
 	loop do
 		if !isNumber id
@@ -167,12 +136,15 @@ def inputScore score
 	return score
 end
 
+#chooseGroup: dung de phan chia cac doi thanh cac bang va loai nhung doi bong bi thua
+# => argument1 hash: tat ca doi bong can phan chia thanh cac bang
 def chooseGroup hash
 	#chia 16 doi thanh 16/4 thanh 4 bang
 	#vong lap 4 lan lap. moi lan la moi bang.
 	#moi bang chua 2 tran(array 2 chieu)
 	#moi trang chua 2 doi va ti so
 	countItem = 1
+	#So group bang tong doi bong chia cho 4
 	allGroup = hash.length/4
 	countGroup = 1
 	if @teamNextRound.length != 0
@@ -183,12 +155,13 @@ def chooseGroup hash
 	end
 	#de luu nhung doi bong da chon vao roi
 	arrEntered = Array.new
+	#nhap tung tran bong cho moi group
 	while countGroup <= allGroup do 
 		puts "*****************************************************"
 		puts " * Group #{countGroup}"
 		#Nhap ti so tran dau thu 1
 		puts " * * Input battle 1!"
-		print "   1. Id team 1 :    "
+		print "   1. Id team 1 :          "
 		id11 = gets.to_s.chomp
 		id11 = inputID123 id11, 1, arrEntered, originHash
 		arrEntered.push(id11)
@@ -196,12 +169,28 @@ def chooseGroup hash
 		print "      Score of this team:  "
 		score11 = inputScore gets.chomp
 
-		print "   2. ID team 2 :    "
+		print "   2. ID team 2 :          "
 		id12 = gets.to_s.chomp
 		id12 = inputID123 id12, 2, arrEntered, originHash
 		arrEntered.push(id12)
 		print "      Score of this team:  "
 		score12 = inputScore gets.chomp
+		#Vong lap kiem tra ti so. neu ti so bang nhau thi phai da tiep de tranh thang thua.
+		loop do
+			if score11 == score12
+				puts "	* #{originHash[id11].at(0)} equal #{originHash[id12].at(0)}! Please add score next battle."
+				print "        * * Score of #{originHash[id11].at(0)}: "
+				addScore = gets.chomp
+				#binding.pry
+				#score11.to_i += addScore.to_i
+				score11 = score11.to_i+addScore.to_i
+				print "        * * Score of #{originHash[id12].at(0)}: "
+				addScore = gets.chomp
+				score12 = score12.to_i+addScore.to_i
+			else 
+				break
+			end
+		end
 		idWin1 = (score11>score12)?id11:id12
 		teamWin1 = originHash[idWin1].at(0)
 		puts "    * Results of battle 1: "
@@ -211,7 +200,7 @@ def chooseGroup hash
 
 		#Nhap ti so tran dau thu 2
 		puts " * * Input battle 2!"
-		print "   1. Id team 1 :    "
+		print "   1. Id team 1 :          "
 		id21 = gets.to_s.chomp
 		id21 = inputID123 id21, 1, arrEntered, originHash
 		arrEntered.push(id21)
@@ -222,6 +211,19 @@ def chooseGroup hash
 		arrEntered.push(id22)
 		print "      Score of this team:  "		
 		score22 = inputScore gets.chomp
+		loop do
+			if score21 == score22
+				puts "	* #{originHash[id21].at(0)} equal #{originHash[id22].at(0)}! Please add score next battle."
+				print "        * * Score of #{originHash[id21].at(0)}: "
+				addScore = gets.chomp
+				score21 = score21.to_i+addScore.to_i
+				print "        * * Score of #{originHash[id22].at(0)}: "
+				addScore = gets.chomp
+				score22 = score22.to_i+addScore.to_i
+			else 
+				break
+			end
+		end
 		idWin2 = (score21>score22)?id21:id22
 		teamWin2 = originHash[idWin2].at(0)
 		puts "    * Results of battle 1: "
@@ -230,16 +232,18 @@ def chooseGroup hash
 		@teamNextRound.merge!({idWin2 =>originHash[idWin2]})
 		#hien thi bang ket 	qua tran dau	
 		countGroup+=1
-		break if countGroup > 2
 	end
 	#Toi gian doi bong duoc vao vong trong
 
 end
 #=begin
+#isSeedNormalInGroup: dung de kiem tra trong doi bang dau co day du doi seed va normal khong
+# => argument1 arr: mang chua 3 doi bong trong bang dau vua nhap vao
+#return:
+# => -1: neu trong bang chua co doi normal
+# => 0 : neu trong bang da co doi normal va doi seed
+# => 1 : neu trong bang chua co doi seed
 def isSeedNormalInGroup (arr)
-	#return 1 neu chua co doi seed
-	#return -1 neu chua co doi normal
-	#return 0 neu da co 2 doi
 	countSeed = 0
 	countNormal = 0	
 	arr.map do |i|
@@ -253,8 +257,8 @@ def isSeedNormalInGroup (arr)
 	return 1 if (countSeed == 0)
 	return 2 if(countSeed != 0 || countNormal != 0)	
 end
-#Goi y tat ca doi co the nhap. Hien thi doi seed neu condition = 1, nguoc lai la -1
-#Return mang chua cac doi duoc cho phep
+#showSuggest: Goi y tat ca doi co the nhap
+#Return mang chi chua cac doi duoc cho phep
 def showSuggest condition
 	arraySuggestID = Array.new
 	puts "Suggest: You must choose in follow table: "
@@ -295,7 +299,7 @@ def checkIdTeamEnd arrEntered , arrNewInput, originHash
 	if  isCheck == 1	#chua co doi seed
 		arrAlow = showSuggest 1 		
 		loop do
-			print "   1. Id team 2 :     "
+			print "   1. Id team 2 :          "
 			id22 = gets.to_s.chomp
 			id22 = inputID123 id22, 2, arrEntered, originHash
 			binding.pry
@@ -336,51 +340,6 @@ def checkIdTeamEnd arrEntered , arrNewInput, originHash
 	end
 	@hash_main
 end
-#=end
-
-=begin
-ob1=FootballTeam.new(1, "Everton", 0)
-ob2=FootballTeam.new(2, "Arsenal", 1)
-ob3=FootballTeam.new(3, "Liverpool", 1)
-ob4=FootballTeam.new(4, "Ipswich Town", 0)
-ob5=FootballTeam.new(5, "Manchester United", 1)
-ob6=FootballTeam.new(6, "Leeds United", 0)
-ob7=FootballTeam.new(7, "West Ham United", 1)
-ob8=FootballTeam.new(8, "Basa", 1)
-ob9=FootballTeam.new(9, "Manchester City", 1)
-ob10=FootballTeam.new(10, "Burnley", 0)
-ob11=FootballTeam.new(11, "Blackburn Rovers", 0)
-ob12=FootballTeam.new(12, "Chelsea", 1)
-ob13=FootballTeam.new(13, "Watford", 1)
-ob14=FootballTeam.new(14, "Leicester City", 0)
-ob15=FootballTeam.new(15, "Hull City", 0)
-ob16=FootballTeam.new(16, "Tottenham Hotspur", 1)
-arr = [ob1 ,ob2 ,ob3 ,ob4 ,ob5 ,ob6 ,ob7 ,ob8 ,ob9 ,ob10 ,ob11 ,ob12 ,ob13 ,ob14, ob15 ,ob16]
-puts arr
-inputListToDB arr
-=end
-
-=begin
-ob1=[1, "Everton", 0]
-ob2=[2, "Arsenal", 1]
-ob3=[3, "Liverpool", 1]
-ob4=[4, "Ipswich Town", 0]
-ob5=[5, "Manchester United", 1]
-ob6=[6, "Leeds United", 0]
-ob7=[7, "West Ham United", 1]
-ob8=[8, "Basa", 1]
-ob9=[9, "Manchester City", 1]
-ob10=[10, "Burnley", 0]
-ob11=[11, "Blackburn Rovers", 0]
-ob12=[12, "Chelsea", 1]
-ob13=[13, "Watford", 1]
-ob14=[14, "Leicester City", 0]
-ob15=[15, "Hull City", 0]
-ob16=[16, "Tottenham Hotspur", 1]
-arr = [ob1 ,ob2 ,ob3 ,ob4 ,ob5 ,ob6 ,ob7 ,ob8 ,ob9 ,ob10 ,ob11 ,ob12 ,ob13 ,ob14, ob15 ,ob16]
-#puts arr
-=end
-#inputListToDB arr
 
 ob1=["Everton", 0]
 ob2=["Arsenal", 1]
@@ -398,7 +357,7 @@ ob13=["Watford", 1]
 ob14=["Leicester City", 0]
 ob15=["Hull City", 0]
 ob16=["Tottenham Hotspur", 1]
-
+$number_team = 16
 @hash_main = {
 	"1" =>  ob1,
 	"2" =>  ob2,
@@ -417,8 +376,12 @@ ob16=["Tottenham Hotspur", 1]
 	"15" =>  ob15,
 	"16" =>  ob16
 }
-#puts Hash[*@hash_main.first].values.class.at(0)
-#puts Hash[*@hash_main.to_a.at(1)].to_a.at(0)
+=begin
+#use to input information of all team into array
+@hash_main.clear
+arrMain = inputListToArr
+inputListToDB arrMain, @hash_main
+=end
 
 #=begin
 @teamNextRound = Hash.new
@@ -430,7 +393,7 @@ loop do
 		showAllTeam @teamNextRound
 		chooseGroup @teamNextRound
 	else
-		puts "     ---*--Teams OF Semi final round---***----"
+		puts "   ---***--Teams OF Semi final round---***----"
 		@teamNextRound.each do |key, value|
 			puts "          * #{value.at(0)}"
 		end	
@@ -439,6 +402,8 @@ loop do
 		break
 	end
 end
+#=end
+
 
 
 
