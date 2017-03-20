@@ -192,11 +192,10 @@ def chooseGroup hash
 			end
 		end
 		idWin1 = (score11>score12)?id11:id12
-		teamWin1 = originHash[idWin1].at(0)
 		puts "    * Results of battle 1: "
 		puts "      #{originHash[id11].at(0)} - #{score11} : #{score12} - #{originHash[id12].at(0)}"
-		puts "      => #{teamWin1} go in round "
-		@teamNextRound.merge!({idWin1 =>originHash[idWin1]})	
+		puts "      => #{originHash[idWin1].at(0)} go in round "
+		#@teamNextRound.merge!({idWin1 =>originHash[idWin1]})	
 
 		#Nhap ti so tran dau thu 2
 		puts " * * Input battle 2!"
@@ -215,22 +214,46 @@ def chooseGroup hash
 			if score21 == score22
 				puts "	* #{originHash[id21].at(0)} equal #{originHash[id22].at(0)}! Please add score next battle."
 				print "        * * Score of #{originHash[id21].at(0)}: "
-				addScore = gets.chomp
+				addScore = inputScore gets.chomp
 				score21 = score21.to_i+addScore.to_i
 				print "        * * Score of #{originHash[id22].at(0)}: "
-				addScore = gets.chomp
+				addScore = inputScore gets.chomp
 				score22 = score22.to_i+addScore.to_i
 			else 
 				break
 			end
 		end
-		idWin2 = (score21>score22)?id21:id22
-		teamWin2 = originHash[idWin2].at(0)
-		puts "    * Results of battle 1: "
+		idWin2 = (score21>score22)?id21:id22		
+		puts "    * Results of battle 2: "
 		puts "      #{originHash[id21].at(0)} - #{score21} : #{score22} - #{originHash[id22].at(0)}"
-		puts "      => #{teamWin2} go in round "
-		@teamNextRound.merge!({idWin2 =>originHash[idWin2]})
+		puts "      => #{originHash[idWin2].at(0)} go in round "
+		#@teamNextRound.merge!({idWin2 =>originHash[idWin2]})
 		#hien thi bang ket 	qua tran dau	
+		#Chon doi nhat bang
+		puts "---***Choose team number one of Group #{countGroup}***---"
+		print "        * * Score of #{originHash[idWin1].at(0)}: "
+		scoreWin1 = inputScore gets.chomp
+		print "        * * Score of #{originHash[idWin2].at(0)}: "
+		scoreWin2 = inputScore gets.chomp
+		idNumberOne = (scoreWin1 > scoreWin2)?idWin1:idWin2
+		loop do
+			if scoreWin1 == scoreWin2
+				puts "	* #{originHash[idWin1].at(0)} equal #{originHash[idWin2].at(0)}! Please add score next battle."
+				print "        * * Score of #{originHash[idWin1].at(0)}: "
+				addScore = gets.chomp
+				#binding.pry
+				#score11.to_i += addScore.to_i
+				scoreWin1 = scoreWin1.to_i+addScore.to_i
+				print "        * * Score of #{originHash[idWin2].at(0)}: "
+				addScore = gets.chomp
+				scoreWin2 = scoreWin2.to_i+addScore.to_i
+			else 
+				break
+			end
+		end
+		puts "      #{originHash[idWin1].at(0)} - #{scoreWin1} : #{scoreWin2} - #{originHash[idWin2].at(0)}"
+		puts "      => #{originHash[idNumberOne].at(0)} go in round "
+		@teamNextRound.merge!({idWin2 =>originHash[idWin2]})
 		countGroup+=1
 	end
 	#Toi gian doi bong duoc vao vong trong
@@ -318,7 +341,7 @@ def checkIdTeamEnd arrEntered , arrNewInput, originHash
 	elsif isCheck == -1	#chua co doi normal
 		arrAlow = showSuggest -1
 		loop do
-			print "   1. Id team 2 :    "
+			print "   1. Id team 2 :         "
 			id22 = gets.to_s.chomp
 			id22 = inputID123 id22, 2, arrEntered, originHash
 			arrEntered.push(id22)
@@ -333,7 +356,7 @@ def checkIdTeamEnd arrEntered , arrNewInput, originHash
 		end
 		return id22
 	else				#da co 2 doi seed va normal
-		print "   1. Id team 2 :    "
+		print "   1. Id team 2 :            "
 		id22 = gets.to_s.chomp
 		id22 = inputID123 id22, 2, arrEntered, originHash
 		return id22 if @hash_main.key?(id22)
