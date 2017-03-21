@@ -1,0 +1,85 @@
+body {
+  background-color: #EEE;
+  width: 1600px; }
+
+header {
+  width: 1280px;
+  height: 110px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 0px 20px; }
+  header .logo-header {
+    width: 130px;
+    height: inherit;
+    float: left;
+    /*background-image: url('./../img/logo.png'); */ }
+  header .header-left {
+    float: left;
+    width: 1110px;
+    height: inherit; }
+
+.header-left .contact {
+  height: 50px;
+  width: inherit;
+  font-size: 8;
+  font-weight: bold; }
+  .header-left .contact .look-after {
+    width: 210px;
+    height: inherit;
+    float: right; }
+  .header-left .contact .look-after img {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    top: 50%;
+    margin-top: -16px;
+    float: left; }
+  .header-left .contact .look-after pre {
+    height: 25px;
+    width: 160px;
+    position: relative;
+    top: 50%;
+    margin-top: -12.5px;
+    float: left;
+    margin-left: 8px; }
+  .header-left .contact .contact-us {
+    float: right;
+    width: 350px;
+    height: inherit; }
+  .header-left .contact .contact-us img {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    top: 50%;
+    margin-top: -16px;
+    float: left; }
+  .header-left .contact .contact-us pre {
+    height: 30px;
+    width: 260px;
+    position: relative;
+    top: 50%;
+    margin-top: -15px;
+    float: left;
+    margin-left: 8px; }
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333; }
+  nav ul li {
+    float: left; }
+  nav ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none; }
+  nav ul li a:hover:not(.active) {
+    background-color: #F90; }
+
+hihi {
+  width: 100px; }
+
+/*# sourceMappingURL=style.css.map */

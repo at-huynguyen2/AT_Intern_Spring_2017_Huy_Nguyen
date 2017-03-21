@@ -1,0 +1,12 @@
+@mixin mixin-item-contact(){
+	
+}
+
+@mixin mixin-midle-vertical($height, $width){
+	height: $height;
+	width: $width;
+	position: relative;
+	top:50%;
+	margin-top: -$height/2;
+	float:left;
+}
