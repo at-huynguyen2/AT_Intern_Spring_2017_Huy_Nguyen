@@ -1,7 +1,7 @@
 require 'pry'
 
 def checkNumber d
-	return (d =~ /\A\d+\z/) ? d.to_i : false 
+	(d =~ /\A\d+\z/) ? d.to_i : false 
 end
 
 def correctTime str
