@@ -1,0 +1,50 @@
+footer{
+	height:230px;
+	width:$container-width;
+	margin:auto;
+	hr{
+		color:#CCC;
+		width:$container-width - 30px;
+	}
+	.logo-footer{
+		float:left;
+		margin: 0px 15px;
+		img{
+			width:165px;
+			height:165px;
+		}
+	}
+	.apply-info{
+		margin: 0px 40px;
+		@include mixin-footer-column(220px);
+	}
+	.social{
+		margin: 0px 40px;
+		@include mixin-footer-column(140px);
+		ul li a img{
+			width:30px;
+			height:30px;
+			float:left;
+		}
+		ul li a p{
+			margin-left:10px;
+			@include mixin-midle-vertical(-4px,80px);
+		}
+	}
+	.info-customer{
+		@include mixin-midle-vertical(150px, 420px);
+		form input[type="text"]{
+			padding:10px;
+			margin:0px;
+		}
+		@include mixin-midle-vertical(150px, 420px);
+		form input[type="submit"] {
+			padding:0px;
+			margin:-10px;
+			height:50px;
+			width:90px;
+			background-image: url('./../../img/icon-mail.jpg');
+			border-radius: 5px;	
+		}
+	}
+}
