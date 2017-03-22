@@ -1,5 +1,4 @@
-body {
-		background-color: #EEE;
+body {		
 		width: $page-width;
 	}
 	header{
@@ -8,17 +7,19 @@ body {
 		margin: auto;
 		box-sizing: border-box;
 		padding: 0px 20px;
+		background-color:#FFF;
+
 		.logo-header{
-		width: 130px;
-		height: inherit;
-		float: left;
-		/*background-image: url('./../img/logo.png'); */
+			width: 130px;
+			height: inherit;
+			float: left;		
+			/*background-image: url('./../img/logo.png'); */
 		}
 		.header-left{
 			float: left;
 			width: 	1110px;
 			height: inherit;
-		}
+		}		
 	}
 
 .header-left {
@@ -37,50 +38,72 @@ body {
 			pre {
 					@include mixin-midle-vertical(25px, 160px); 
 					margin-left:8px;
+					span{color:$color-orange}
 				}
 		}
 		.contact-us{
 			float: right;
-			width: 350px;
+			width: 380px;
 			height: inherit;
 		}
 		.contact-us{
 			img{ @include mixin-midle-vertical(32px, 32px);}
 			pre {
 					@include mixin-midle-vertical(30px, 260px); 
-					margin-left:8px;					
+					margin-left:8px;	
+					span{color:$color-orange}				
 				}
 		}
 	}
 }
 
-
-
-
-
-
-nav  {
-  ul {
+.navi-header{
+	ul {
 	    list-style-type: none;
 	    margin: 0;
 	    padding: 0;
 	    overflow: hidden;
-	    background-color: #333;
-
-	    li {
-		    float: left;
-		}
-
-		li a {
-		    display: block;
-		    color: white;
-		    text-align: center;
-		    padding: 14px 16px;
-		    text-decoration: none;
-		}
-
-		li a:hover:not(.active) {
-		    background-color: #F90;
-		}
+	    margin-left:200px;
 	}
+
+	li {
+	    float: left;
+	}
+
+	li a {
+	    display: block;
+	    color: black;
+	    text-align: center;
+	    padding: 15px 20px;
+	    text-decoration: none;
+	    font-size: 10px;
+	    font-weight: bold;
+	}
+
+	li a:hover:not(.active) {
+	    color:$color-orange;
+	}
+
+	.active {
+	    border-bottom: solid 4px $color-orange;
+	}
+}
+.banner{
+	height:180px;
+	width: $page_width;
+	background-image: url('./../../img/banner.png');
+	top: -100px;
+	text-aline:center;
+	margin:auto;
+		div.text-horizonal {
+			height:150px;
+			width:1200px;
+			margin:auto;
+			p{
+				font-weight:bold;
+				font-size:25;
+				color: white;
+				@include mixin-midle-vertical(30px, 300px);
+			}
+		}
 }

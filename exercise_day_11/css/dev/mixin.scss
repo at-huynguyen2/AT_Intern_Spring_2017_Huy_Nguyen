@@ -1,7 +1,3 @@
-@mixin mixin-item-contact(){
-	
-}
-
 @mixin mixin-midle-vertical($height, $width){
 	height: $height;
 	width: $width;
@@ -10,3 +6,20 @@
 	margin-top: -$height/2;
 	float:left;
 }
+@mixin mixin-footer-column($width-box){	
+	width:$width-box;
+	float:left;
+	h4{
+		margin: 10px;
+	}
+	ul{
+		padding-left:10px;
+		list-style-type: none;
+		li{
+			margin: 10px 0px;
+			a{text-decoration: none; color:black;}
+			a:hover{color:$color-orange}
+		}
+	}
+}
+
