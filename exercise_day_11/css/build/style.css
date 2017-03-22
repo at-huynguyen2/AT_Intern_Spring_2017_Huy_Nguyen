@@ -1,5 +1,6 @@
 body {
-  width: 1600px; }
+  width: 1600px;
+  font-family: Arial; }
 
 header {
   width: 1280px;
@@ -7,7 +8,8 @@ header {
   margin: auto;
   box-sizing: border-box;
   padding: 0px 20px;
-  background-color: #FFF; }
+  background-color: #FFF;
+  margin-bottom: -15px; }
   header .logo-header {
     width: 130px;
     height: inherit;
@@ -93,15 +95,17 @@ header {
   background-image: url("./../../img/banner.png");
   top: -100px;
   text-aline: center;
-  margin: auto; }
+  margin: auto;
+  font-size: 20px; }
   .banner div.text-horizonal {
     height: 150px;
     width: 1200px;
     margin: auto; }
-    .banner div.text-horizonal p {
+    .banner div.text-horizonal h3 {
       font-weight: bold;
-      font-size: 25;
+      font-size: 30;
       color: white;
+      font-weight: unset;
       height: 30px;
       width: 300px;
       position: relative;
@@ -128,17 +132,7 @@ hihi {
     text-decoration: none;
     font-weight: bold;
     color: #FFF;
-    margin: 0px 10px;
-    /*
-    div{
-    	border: 1px solid #000;
-    	padding:25px 115px;
-    	border-radius: 10px;	    	
-    }	 
-    .div-left{ background-image: url('./../../img/featured- tour.jpg');opacity:0.5; background-color:blue;}
-		.div-middle{background-image: url('./../../img/external-tour.jpg');}
-  	.div-right{ background-image: url('./../../img/internal-tour.jpg');}  
-  	*/ }
+    margin: 0px 10px; }
 
 .title-main {
   padding: 40px 10px;
@@ -148,7 +142,8 @@ hihi {
   color: #0EC0EE; }
 
 .artical a {
-  border: solid #ccc 1px;
+  border: solid rgba(128, 128, 128, 0.4) 1px;
+  border-radius: 5px;
   float: left;
   padding-bottom: 5px;
   margin: 10px 13px;
@@ -162,6 +157,84 @@ hihi {
     margin: 3px 15px; }
   .artical a:hover {
     color: #FFA800; }
+
+.nav-contain ul li a {
+  text-decoration: none;
+  color: #FFF; }
+
+.text-featured-tour {
+  background-image: url("./../../img/featured-tour.jpg");
+  width: 400px;
+  height: 125px;
+  background-color: #CCC;
+  color: #FFF;
+  position: relative;
+  border-radius: 7px; }
+  .text-featured-tour .bg-tour {
+    height: 40px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    margin-top: -20px;
+    float: left; }
+
+.text-external-tour {
+  background-image: url("./../../img/external-tour.jpg");
+  width: 400px;
+  height: 125px;
+  background-color: #CCC;
+  color: #FFF;
+  position: relative;
+  border-radius: 7px; }
+  .text-external-tour .bg-tour {
+    height: 40px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    margin-top: -20px;
+    float: left; }
+
+.text-internal-tour {
+  background-image: url("./../../img/internal-tour.jpg");
+  width: 400px;
+  height: 125px;
+  background-color: #CCC;
+  color: #FFF;
+  position: relative;
+  border-radius: 7px; }
+  .text-internal-tour .bg-tour {
+    height: 40px;
+    width: 100px;
+    position: relative;
+    top: 50%;
+    margin-top: -20px;
+    float: left; }
+
+.opacity-blue {
+  width: 400px;
+  height: 125px;
+  z-index: 1;
+  background-color: blue;
+  opacity: 0.3;
+  border-radius: 7px; }
+
+.opacity-draw {
+  width: 400px;
+  height: 125px;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.3;
+  border-radius: 7px; }
+
+.text-bold {
+  color: #FFF;
+  z-index: 2;
+  position: absolute;
+  width: 400px;
+  height: 25px;
+  top: 50%;
+  padding: 150px 0pxl;
+  margin-top: -12.25px; }
 
 footer {
   height: 230px;
@@ -243,5 +316,10 @@ footer {
       width: 90px;
       background-image: url("./../../img/icon-mail.jpg");
       border-radius: 5px; }
+  footer .design-by {
+    float: right;
+    margin-top: 25px; }
+    footer .design-by span {
+      color: green; }
 
 /*# sourceMappingURL=style.css.map */

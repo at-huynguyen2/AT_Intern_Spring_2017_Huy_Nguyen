@@ -22,4 +22,25 @@
 		}
 	}
 }
+@mixin mixin-nav-opacity($url){
+	background-image: url($url);
+	width:400px;
+	height: 125px;
+	background-color:#CCC;
+	color:#FFF;
+	position: relative;
+	border-radius:$radius-contain-nav;
+	.bg-tour{
+		@include mixin-midle-vertical(40px,100px);
+	}
+}
+
+@mixin mixin-color-opacity($color){
+	width:400px;
+	height: 125px;
+	z-index:1;
+	background-color:$color;
+	opacity: 0.3;
+	border-radius:$radius-contain-nav;
+}
 

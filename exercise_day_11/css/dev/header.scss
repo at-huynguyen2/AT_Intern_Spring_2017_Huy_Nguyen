@@ -1,5 +1,6 @@
 body {		
 		width: $page-width;
+		font-family: Arial;
 	}
 	header{
 		width: 1280px;
@@ -8,7 +9,7 @@ body {
 		box-sizing: border-box;
 		padding: 0px 20px;
 		background-color:#FFF;
-
+		margin-bottom: -15px;
 		.logo-header{
 			width: 130px;
 			height: inherit;
@@ -95,14 +96,17 @@ body {
 	top: -100px;
 	text-aline:center;
 	margin:auto;
+	font-size: 20px;
 		div.text-horizonal {
 			height:150px;
 			width:1200px;
 			margin:auto;
-			p{
+
+			h3{
 				font-weight:bold;
-				font-size:25;
+				font-size:30;
 				color: white;
+				font-weight: unset;
 				@include mixin-midle-vertical(30px, 300px);
 			}
 		}
