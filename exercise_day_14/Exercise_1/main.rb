@@ -49,7 +49,6 @@ inputListToArr @hash_main
 inputListToDB @hash_main
 =end
 
-#=begin
 @teamNextRound = Hash.new
 showAllTeam @hash_main
 chooseGroup @hash_main
@@ -66,7 +65,6 @@ loop do
 		break
 	end
 end
-#=end
 
 
 
