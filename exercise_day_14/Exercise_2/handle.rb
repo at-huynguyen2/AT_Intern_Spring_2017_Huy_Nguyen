@@ -10,4 +10,3 @@ $combineArr = getDataToHash
 arr = sortByResult $combineArr if $combineArr != nil
 inputListToDB arr
 exportfile arr if arr!=nil
-binding.pry

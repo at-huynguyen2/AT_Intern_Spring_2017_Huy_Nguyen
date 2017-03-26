@@ -54,8 +54,5 @@ def showResulf arr
 	puts "------------------------------------------"
 	binding.pry
 	return writefile
-end
-# $combineArr = getDataToHash
-# arr = sortByResult $combineArr if $combineArr != nil
-# showResulf arr 	if arr!=nil	
+end	
 
