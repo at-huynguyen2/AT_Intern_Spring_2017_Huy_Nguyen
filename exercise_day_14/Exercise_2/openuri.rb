@@ -41,14 +41,9 @@ def getDataToHash
 		countTeam = doc.css("table.wikitable.plainrowheaders th[scope='row'] a").size
 		countTeam -=1
 		(0..countTeam).each do |i|
-				arr = Array.new
-				if i==0
-					rand1=0
-					rand2=19
-				else
-					rand1 =(i)*20
-					rand2 = rand1+19
-				end			
+				arr = Array.new				
+				rand1 =(i)*20
+				rand2 = rand1+19		
 				arr = doc.css("table.wikitable.plainrowheaders td")[rand1..rand2].map{|k|k.text}						
 				key = doc.css("table.wikitable.plainrowheaders th[scope='row'] a")[i].text
 				#hash[:key] = arr
