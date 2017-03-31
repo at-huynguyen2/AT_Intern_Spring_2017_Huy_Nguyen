@@ -71,7 +71,7 @@ Daily report 27/03/2016
 
 	function foo() {} :  is an actual named function
 
-	var foo = function() {}  is a regular variable declaration with an 	anonymous function attached to it
+	var foo = function() {}  is a regular variable declaration with an 	anonymous function attached to it. Use when you want return data for variable
 
 6. How can JavaScript manipulate HTML dynamically?
 
@@ -87,6 +87,15 @@ Daily report 27/03/2016
 
 	We can use BOM to store a javascript variable ar client side as cookie, session, vv..
 
+	BOM
+		Cookie:Limit storage is 1 years
+
+	HTML5:
+
+		localStorage: Storage data when you delete data browser
+
+		SessionStorage: Delete when you turn off brower. session can contact 		with server 
+
 	example: 
 
 		//set value
@@ -100,6 +109,7 @@ Daily report 27/03/2016
 		    edit.innerHTML = localStorage.getItem('todoData'); 
  		}
 
+	
 
 
 

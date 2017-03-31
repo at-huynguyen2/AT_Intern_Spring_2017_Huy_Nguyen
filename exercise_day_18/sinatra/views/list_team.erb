@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Teams</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="./../css/build/mystyle.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css">
+  
+  <script type="text/javascript" src="./../js/myscript.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+</head>
+<body>
+
+<div class="container">
+  <div class="div-form col-sm-2">
+    <h4>Thêm đội bóng mới</h4>
+    <form class="/add-teams" action="/add-team" method="POST">
+      <input type="text" placeholder="team's name" name="name" class="form-control" id="js-name">
+       <input type="checkbox" id="js-seed" value="1">Đội hạt giống<br>
+       
+      <input type="button" name="" value="Thêm mới" class="btn btn-success" onclick="loadList()">
+    </form>
+
+    
+  </div>
+  <div id="js-get-list-items" class="div-table col-sm-8">
+    <div id="js-all-items" class="div-table col-sm-8">
+    <table id="data-table" class="table table-striped table-bordered" cellspacing="0">
+      <tr>
+        <th>ID</th>
+        <th>Tên đội bóng</th>
+        <th>Đánh gía</th>
+      </tr>
+      <% @teams.each do |item| %>
+      <tr>
+        <td><%= item.id%></td>
+        <td><%= item.name_team %></td>
+        <td><%= item.seed %></td>
+      </tr>  
+      <% end %>
+    </table> 
+  </div>
+  </div>
+</div>
+
+</body>
+</html>

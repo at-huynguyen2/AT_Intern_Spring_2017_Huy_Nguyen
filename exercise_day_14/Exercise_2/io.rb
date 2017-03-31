@@ -52,7 +52,7 @@ def showResulf arr
 			pos+=1
 	end
 	puts "------------------------------------------"
-	binding.pry
+	# binding.pry
 	return writefile
 end	
 

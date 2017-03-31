@@ -1,0 +1,8 @@
+.container{
+	float: left;
+}
+.div-form{
+	float: left;
+	border: 1px #ccc solid;
+}
+.add-teams{text-align: center;}

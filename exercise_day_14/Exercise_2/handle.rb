@@ -8,5 +8,5 @@ require './exportfile'
 
 $combineArr = getDataToHash
 arr = sortByResult $combineArr if $combineArr != nil
-inputListToDB arr
+# inputListToDB arr
 exportfile arr if arr!=nil

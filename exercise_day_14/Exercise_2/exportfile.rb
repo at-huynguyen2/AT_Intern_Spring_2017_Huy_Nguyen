@@ -7,7 +7,7 @@ def exportfile arr
     text = showResulf arr
     file.puts text
     file.close
-    binding.pry
+    # binding.pry
   rescue IOError => e
     puts "Can not write file. Please try again after there."
   ensure

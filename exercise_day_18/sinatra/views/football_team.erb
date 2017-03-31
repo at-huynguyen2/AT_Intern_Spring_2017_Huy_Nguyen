@@ -1,0 +1,9 @@
+<h3 style="color:maroon">All team</h3>
+<ul>
+<% @teams.each do |team| %>
+	<li>
+		<%= team.name_team %>
+	</li>
+<% end %>
+</ul>
+<a href="/">Back to Home</a>

@@ -1,0 +1,16 @@
+<div id="js-all-items" class="div-table col-sm-8" style="border: 2px solid gray;">
+    <table class="table table-striped">
+      <tr>
+        <th>ID</th>
+        <th>Team's name</th>
+        <th>Seed</th>
+      </tr>
+      <% @teams.each do |item| %>
+      <tr>
+        <td><%= item.id %></td>
+        <td><%= item.name_team %></td>
+        <td><%= item.seed %></td>
+      </tr>  
+      <% end %>
+    </table> 
+  </div>
