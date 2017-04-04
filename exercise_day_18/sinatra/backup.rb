@@ -30,7 +30,7 @@ post '/add_team' do
     @team = Team.new  
     @team.name_team = params['name']
     @team.seed = params['seed'] 
-    @team.status = "wait"    
+    @team.status = "wait"
     if @team.save
       # binding.pry
       redirect '/get_list_teams'

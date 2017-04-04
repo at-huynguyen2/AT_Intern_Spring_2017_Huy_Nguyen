@@ -4,6 +4,7 @@
         <th>Số thứ tự</th>
         <th>Tên đội bóng</th>
         <th>Đánh gía</th>
+        <th></th>
       </tr>
       <% count = 1 %>
       <% @teams.each do |item| %>
@@ -12,10 +13,9 @@
         <td><%= item.name_team %></td>
         <td><% if item.seed == true %>
               Đội hạt giống
-            <% else%>
-              Đội thường
             <% end %>
         </td>
+        <td><button onclick="getIdTeam(<%= item.id %>, '<%= item.name_team %>', <%= @order %>)" data-dismiss="modal">Chọn</button></td>
       </tr>
       <% count += 1 %>  
       <% end %>

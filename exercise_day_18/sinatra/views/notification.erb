@@ -1,0 +1,8 @@
+<span id='js-total-battle' style=""><%= @total_battle_pass %></span>
+<% if @notification == 1 %>
+	Đã lưu thành công	
+<% elsif @notification == 0 %>
+	Trận đấu hòa. Xin vui lòng nhập thêm tỉ số của trận đấu này!
+<% else  %>
+	Không thể lưu được. Vui lòng thử lại lần sau!
+<% end %>
