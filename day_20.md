@@ -8,7 +8,7 @@
 	Key word most important is OVER to indentifical Window Function
 	Example:  
 | Studen_name | Class_name | Point  | avg |
-| :-------- | --------:| :--: |
+|-------------|-----------|---------|----|
 | Huy  | A | 5  |7|
 | Hung | A | 10 |7|
 | Tuan | A | 6  |7|
@@ -24,7 +24,7 @@
 	* SQL is database manager tradition.  SQL storage data format table contain row and column, each row will have key respectively. 
 	example: 
 | id |name | salary  | 
-| :-------- | --------:|
+|----|-----|---------|
 | 0 | Huy | 5  |
 | 1 | Hung | 10 |
 | 2 | Tuan | 6  |
