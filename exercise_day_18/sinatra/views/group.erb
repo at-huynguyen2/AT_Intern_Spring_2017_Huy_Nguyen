@@ -8,7 +8,7 @@
           <p>Vòng đấu <%= @group[i]['round']%> </p>
         <% end %>
 
-        <a href="/battle?group=<%= @group[i]['name']%>">
+        <a href="/battle?group=<%= @group[i]['name']%>" <%= "class='disabled'" if @group[i]['status'] == 'finish' || @group[i]['status'] == 'block' %> >
           <div class="item-group">
             <img src="./../../img/bg-battle.jpg">
             <div class="bg-opacity"></div>

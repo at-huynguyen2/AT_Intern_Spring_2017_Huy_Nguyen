@@ -1,3 +1,16 @@
+# require_relative './controllers/application_controller'
+# require_relative './controllers/group_controller'
+
+# use GroupController
+# run ApplicationController
+# class App 
+#   include ApplicationController
+#   include GroupController
+# end
+
+# app = App.new
+
+
 
 require 'sinatra'
 require 'sinatra/activerecord'
@@ -28,8 +41,13 @@ end
 post '/add_team' do 
   begin   
     @team = Team.new  
-    @team.name_team = params['name']
-    @team.seed = params['seed'] 
+    @team.name_team = params['name'].strip
+    @team.seed = params['seed']
+    if params['shortName'] == ""
+      @team.short_name = params['name'].strip[0..2].upcase
+    else
+      @team.short_name = params['shortName'].strip
+    end
     @team.status = "wait"    
     if @team.save
       # binding.pry
@@ -38,7 +56,7 @@ post '/add_team' do
       "Sorry, there was an error!"
     end
   rescue Exception => e
-    redirect '404_page'
+    redirect '404_page' 
   end
 end
 
@@ -61,13 +79,6 @@ end
 
 get '/battle' do
   begin
-    # binding.pry
-    # @group = Group.where('id = '+@id_group).find(1)
-    # if @group.status ==  'finish'
-    #   erb :info_battle
-    # else
-    #   erb :battle
-    # end
     @id_group = params['group']
     erb :battle
   rescue Exception => e
@@ -151,6 +162,33 @@ get '/save_battle' do
     redirect '404_page'
   end  
 end
+
+get '/result_table' do
+  team_list = Team.all
+  @teams_length = team_list.length
+  # binding.pry
+  @result_table = Array[@teams_length, @teams_length]  
+  (0...@teams_length).each do |row|
+    battle_of_team = Battle.where("id_team_a = '" + team_list[row].id.to_s + "'")
+    (row...@teams_length).each do |column|
+        if row == column
+          @result_table[row, column] = "-"
+        else          
+          if (battle_of_team[column] == nil)
+            @result_table[row, column] = "-"
+          else
+            # binding.pry
+            # result_table[row, column] = battle_of_team[row].score_team_a.to_s + " - " + battle_of_team[row].score_team_b.to_s
+            @result_table[row, column] = battle_of_team[row].score_team_a.to_s + " - " + battle_of_team[column].score_team_b.to_s
+          end
+        end
+    end
+  end
+  binding.pry
+  erb :battle_table
+end
+
+
 
 
 

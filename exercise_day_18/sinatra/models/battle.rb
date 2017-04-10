@@ -1,3 +1,3 @@
 class Battle < ActiveRecord::Base
-	self.table_name = "battle"
+  self.table_name = "battle"
 end

@@ -1,7 +1,13 @@
-require './config/environments'
+# require './config/environments'
 
-class GroupController < Sinatra::Base
+# class ApplicationController < Sinatra::Base
+#   get '/' do
+#     erb :index  
+#   end
+# end
 
- 
-
+module ApplicationController
+  get '/' do
+    erb :index  
+  end
 end

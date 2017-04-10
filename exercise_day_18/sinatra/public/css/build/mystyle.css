@@ -116,3 +116,8 @@ body{
 }
 .item-group .text .finish{ color: yellow }
 .item-group .text .block{ color: maroon }
+
+a.disabled {
+   pointer-events: none;
+   cursor: default;
+}

@@ -17,6 +17,7 @@ function getTeams(order){
       }
   });
 };
+
 function getIdTeam(id, name, order){
   $('#js-team-'+order).text(name); 
   $('#js-team-'+order).attr('value', id);
