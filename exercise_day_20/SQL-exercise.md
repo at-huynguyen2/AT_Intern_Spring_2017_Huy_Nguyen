@@ -74,6 +74,55 @@ ELSE 'Not A Triangle'
 END
 FROM TRIANGLES;
 ```
+###Aggregation
+1. Revising Aggregations - The Count Function
+```sql
+SELECT COUNT(*) 
+FROM CITY
+WHERE POPULATION > 100000;
+```
+2. Revising Aggregations - The Sum Function
+```sql
+SELECT SUM(POPULATION) 
+FROM CITY
+WHERE DISTRICT = 'California';
+```
+3. Revising Aggregations - Averages
+```sql
+SELECT AVG(POPULATION) 
+FROM CITY
+WHERE DISTRICT = 'California';
+```
+4. Average Population
+```sql
+SELECT FLOOR(AVG(POPULATION))
+FROM CITY;
+```
+5. Japan Population
+```sql
+SELECT SUM(POPULATION) 
+FROM CITY
+WHERE COUNTRYCODE = 'JPN';
+```
+6. Population Density Difference
+```sql
+SELECT MAX(POPULATION) - MIN(POPULATION)
+FROM CITY;
+```
+7. The Blunder
+```sql
+SELECT CEIL(AVG(Salary) - AVG(REPLACE(SALARY, '0', '')))
+FROM EMPLOYEES
+```
+8. Top Earners
+```sql
+SELECT salary * months AS earnings, COUNT(*)
+FROM Employee
+GROUP BY earnings
+ORDER BY earnings DESC
+LIMIT 1;
+```
+
 ###Join
 1. Asian Population
 ```sql
@@ -94,8 +143,5 @@ FROM CITY, COUNTRY
 WHERE CITY.COUNTRYCODE = COUNTRY.CODE
 GROUP BY COUNTRY.CONTINENT;
 ```
-4.  The Report
-```sql
 
-```
 
