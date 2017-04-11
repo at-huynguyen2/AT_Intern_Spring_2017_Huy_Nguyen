@@ -1,4 +1,5 @@
-	#`Daily report SQL 7/4/2017`
+#`Daily report SQL 7/4/2017`
+
 
 #### 1. What is TypeScript and Why do we need it?
 TypeScript is a strict superset of JavaScript, and adds optional static typing and class-based object-oriented programming to the language
@@ -62,6 +63,88 @@ class Shape
 var shap = new Square(6,"Square");
 shap.area();
 shap.circuit();
+```
+###Example for future ES6
+####1. Block scope variable
+Variable will have limit action in block declared it
+```javascript
+function(email){
+  var pattern = /\S+@\S+\.\S+/;
+  var isValidateEmail = pattern.test(email); 
+  if(isValidateEmail == true){
+	  console.log("Email vailidate");
+	  //correct
+  }
+};
+
+if(isValidateEmail == false){
+	  console.log("Email don't vailidate");
+	  //error
+  }
+```
+####2. Template Literals
+*Syntax of ES5:  *
+```javascript
+var a = 5;
+var b = 10;
+console.log('Sum a and b is ' + (a + b));
+//return 15
+```
+*Syntax of ES6:  *
+```javascript
+var a = 5;
+var b = 10;
+console.log('Sum a and b is ' + ${a + b});
+//return 15
+```
+####3. Multi-line strings
+*Syntax of ES5:  *
+```javascript
+var st = "This string will \
+  \n down line";
+```
+*Syntax of ES6:  *
+```javascript
+var st = `This string will 
+	down line`;
+```
+####4. Arrow functions
+```javascript
+var grade_student = [
+  'Maria',
+  'Jon',
+  'Harry',
+  'Kery'
+];
+
+var length = grade_student.map(function(grade_student) { 
+  return grade_student.length; 
+});
+//5,3,5,4 
+```
+####5. For...of
+*Syntax of ES5:  *
+```javascript
+for (var item = 0, lenght = arr.length; item < len; item++) {
+    $str += "<p>" + arr[item] + "</p>";
+  }
+```
+*Syntax of ES6:  *
+```javascript
+for (var item = 0, lenght = arr.length; item < len; item++) {
+    $str += "<p> ${arr[item]} </p>";
+  } 
+```
+####6. Default parameters
+Default function parameters allow formal parameters to be initialized with default values if no value or undefined is passed.
+```javascript
+function sum(a, b) {
+  b = (typeof b !== 'undefined') ?  b : 0;
+  return a + b;
+}
+
+sum(5, 2); 	// return 7
+multiply(5);    // return 5
 ```
 
 
