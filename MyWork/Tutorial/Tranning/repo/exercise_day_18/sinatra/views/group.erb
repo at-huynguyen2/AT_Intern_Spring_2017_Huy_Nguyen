@@ -1,0 +1,37 @@
+ 
+  <% if @count_teams %4 == 0 
+      i = 0
+      length_group = @group.length
+      while i < length_group do 
+        if @group[i]['round'] != @group[i-1]['round'] %>
+          <div style="clear: both;"></div>
+          <p>Vòng đấu <%= @group[i]['round']%> </p>
+        <% end %>
+
+        <a href="/battle?group=<%= @group[i]['name']%>" <%= "class='disabled'" if @group[i]['status'] == 'finish' || @group[i]['status'] == 'block' %> >
+          <div class="item-group">
+            <img src="./../../img/bg-battle.jpg">
+            <div class="bg-opacity"></div>
+            <div class="text">
+              <p>Bảng đấu <%= @group[i]['name']%></p>
+              <p>Trạng thái:   
+              <% if @group[i]['status'] == 'wait'%>
+                  <span> Đang tiến hành </span>
+              <% elsif @group[i]['status'] == 'finish' %>
+                  <span class='finish'> Hoàn thành </span>
+              <% else %>
+                  <span class='block'> Đang khóa </span>
+              <% end %>
+              </p>
+              <p>Đội nhất bảng: <%= @group[i]['first_team']%></p>
+              <p>Đội nhì bảng: <%= @group[i]['second_team']%></p>
+            </div>        
+          </div> 
+        </a>  
+
+
+      <% i+=1
+      end %>
+    <% else %>
+    <span class="notification"> Tổng số đội bóng phải chia hết cho 4. Xin vui lòng nhập thêm đội bóng mới! </span>
+  <% end %>

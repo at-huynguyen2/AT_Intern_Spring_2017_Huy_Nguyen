@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>DOM & BOM</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <div id="js-hello">
+    <input type="text" id="name" value="">
+    <button type="button" name="button" id="js-submit">click</button>
+    <h3>members</h3>
+    <ul id="content">
+
+    </ul>
+  </div>
+  <script type="text/javascript">
+    var members = [];
+    var obj = document.getElementById('name');
+    var submitBtn = document.getElementById('js-submit');
+    content = document.getElementById('content');
+    submitBtn.addEventListener('click', function(){
+      members.push(obj.value);
+      showMember();
+    });
+    function showMember() {
+      var html='';
+      size = members.length - 1;
+      content.innerHTML = '';
+      for (var i = 0; i <= size; i++) {
+        var li = document.createElement('li');
+        var btn = document.createElement('button');
+        var textBtn = document.createTextNode('delete');
+        btn.addEventListener('click', function(){
+          content.removeChild(this.parentNode);
+        });
+        btn.appendChild(textBtn);
+        li.innerHTML = members[i];
+        li.appendChild(btn);
+        content.appendChild(li);
+      }
+    };
+
+    function submit() {
+      members.push(obj.value);
+      showMember();
+    };
+  </script>
+</body>
+</html>
