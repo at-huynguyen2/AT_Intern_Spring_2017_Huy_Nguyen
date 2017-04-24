@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>Team</th>
+      <th>Joinded day</th>
+      <th>Avatar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees ">
+      <td>{{employee.id}}</td>
+      <td>{{employee.name | capitalize}}</td>
+      <td>{{employee.team}}</td>
+      <td>{{employee.date | date}}</td>
+      <td>{{employee.avatar}}</td>
+    </tr>
+  </tbody>
+</table>
