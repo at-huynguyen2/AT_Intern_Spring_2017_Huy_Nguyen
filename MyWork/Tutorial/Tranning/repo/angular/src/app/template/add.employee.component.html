@@ -1,0 +1,37 @@
+<div class="col-sm-5">
+  <form #employeeForm = "ngForm" (ngSubmit) = "addEmployee(employeeForm)">
+    <fieldset ngModelGroup = "info" class="col-sm-4" style="border: solid 1px #ccc">
+      <label for="name">Name: </label>
+      <input type="text" name="name" class="form-control" ngModel required #name=""/>
+      <label for="birthday">birthday: </label>
+      <input type="text" name="birthday" class="form-control" ngModel><br>
+    </fieldset>
+    <fieldset ngModelGroup = "account" class="col-sm-4" style="border: solid 1px #ccc">
+      <label for="email">Email: </label>
+      <input type="text" name="email" class="form-control" ngModel>
+      <label for="github">Github: </label>
+      <input type="text" name="github" class="form-control" ngModel><br>
+    </fieldset>
+    <div style="clear: both;"></div>
+    <button type="submit" class="btn btn-success col-sm-8" [disabled]="!employeeForm.valid">Submit</button>
+  </form>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+        <th>Email</th>
+        <th>Github</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees"  >
+        <td>{{employee.info.name}}</td>
+        <td>{{employee.info.birthday}}</td>
+        <td>{{employee.account.email}}</td>
+        <td>{{employee.account.github}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
