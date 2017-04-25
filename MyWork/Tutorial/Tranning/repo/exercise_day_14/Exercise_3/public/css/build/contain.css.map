@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,IAAI;EACH,KAAK,EAAC,KAAK",
-"sources": ["../dev/contain.scss"],
-"names": [],
-"file": "contain.css"
-}

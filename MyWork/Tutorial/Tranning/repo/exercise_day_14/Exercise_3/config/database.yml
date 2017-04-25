@@ -1,6 +1,0 @@
-development:
-  adapter: mysql2
-  database: sinatra_demo
-  username: <%= ENV['PG_USER'] %>
-  password: <%= ENV['PG_PASS'] %>
-  host: 0.0.0.0
